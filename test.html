@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Notation des Managers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Noter les Managers</h1>
+    <form action="/submit_rating" method="POST">
+        <label for="manager">Sélectionner le manager :</label>
+        <select id="manager" name="manager">
+            <option value="selin">Selin</option>
+            <option value="jean">Jean</option>
+        </select><br><br>
+        
+        <label for="rating">Note (1-5) :</label>
+        <input type="number" id="rating" name="rating" min="1" max="5"><br><br>
+        
+        <label for="comments">Commentaires :</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br><br>
+        
+        <input type="submit" value="Soumettre">
+    </form>
+</body>
+</html>
