@@ -2,10 +2,38 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Notation des Managers</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronomètre - Jours écoulés</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        #counter {
+            font-size: 3em;
+            color: #007BFF;
+        }
+    </style>
 </head>
 <body>
-    <h1>Retourne travailler le vote est fini</h1>
+    <h1>Nombre de jours depuis que la porte n'est pas réparée</h1>
+    <div id="counter">0</div>
+
+    <script>
+        function calculateDays() {
+            const startDate = new Date("2024-09-09");
+            const currentDate = new Date();
+            const differenceInTime = currentDate - startDate;
+            const daysElapsed = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
+            document.getElementById('counter').textContent = daysElapsed;
+        }
+
+        // Calculate days on page load
+        calculateDays();
+    </script>
 </body>
 </html>
