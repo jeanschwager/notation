@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronomètre - Jours écoulés</title>
+    <title>Chronomètre - Jours et Temps écoulé</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,26 +14,39 @@
             color: #333;
         }
         #counter {
-            font-size: 3em;
+            font-size: 2em;
             color: #007BFF;
         }
     </style>
 </head>
 <body>
-    <h1>Nombre de jours depuis que la porte n'est pas réparée</h1>
-    <div id="counter">0</div>
+    <h1>Nombre de jours, heures, minutes et secondes depuis le 5 septembre 2024 à 12h</h1>
+    <div id="counter">0 jours, 0 heures, 0 minutes, 0 secondes</div>
 
     <script>
-        function calculateDays() {
-            const startDate = new Date("2024-09-06");
-            const currentDate = new Date();
+        function updateCounter() {
+            const startDate = new Date("2024-09-05T12:00:00"); // Date de départ
+            const currentDate = new Date(); // Date actuelle
+
+            // Calcul de la différence en millisecondes
             const differenceInTime = currentDate - startDate;
-            const daysElapsed = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
-            document.getElementById('counter').textContent = daysElapsed;
+
+            // Calcul des jours, heures, minutes et secondes
+            const days = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((differenceInTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((differenceInTime % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((differenceInTime % (1000 * 60)) / 1000);
+
+            // Mise à jour du texte dans la page
+            document.getElementById('counter').textContent = 
+                `${days} jours, ${hours} heures, ${minutes} minutes, ${seconds} secondes`;
         }
 
-        // Calculate days on page load
-        calculateDays();
+        // Mise à jour du compteur toutes les secondes
+        setInterval(updateCounter, 1000);
+
+        // Calcul initial
+        updateCounter();
     </script>
 </body>
 </html>
